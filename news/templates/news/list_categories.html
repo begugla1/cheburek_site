@@ -1,0 +1,9 @@
+{% for cat in cats %}
+    {% if cat.articles__count > 0%}
+        {% if cat.slug == cat_selected %}
+            <div class="cl"><p class="selected">{{ cat.name }}</p></div>
+        {% else %}
+            <div class="cl"><p><a class='news_category' href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></p></div>
+        {% endif %}
+    {% endif %}
+{% endfor %}

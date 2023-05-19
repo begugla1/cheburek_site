@@ -1,0 +1,23 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+  <div class="features">
+    <div class="register">
+      <h1 style="margin-bottom: 20px">Вход</h1>
+      <form method="post">
+            {% csrf_token %}
+
+            <div class="error">{{ form.non_field_errors }}</div>
+
+            {% for el in form %}
+                <p>{{ el }}</p>
+                <div class="error">{{ el.errors }}</div>
+            {% endfor %}
+
+        <button type="submit" class="btn btn-outline-info" style="margin-top: 10px">Войти</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

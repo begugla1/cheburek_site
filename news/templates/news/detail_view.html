@@ -1,0 +1,14 @@
+{% extends 'main/layout.html' %}
+
+{% block title %} {{ article.title }} {% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>{{ article.title }}</h1>
+        <p><b>Категория: </b>{{ article.cat }}</p>
+        <p>{{ article.date }}</p>
+        <p>{{ article.full_text }}</p><br>
+        <a href="{% url 'news_update' article.cat.slug article.slug %}" class="btn btn-outline-info" style="margin-right: 10px">Редактировать</a>
+        <a href="{% url 'news_delete' article.cat.slug article.slug %}" class="btn btn-outline-danger">Удалить</a>
+    </div>
+{% endblock %}

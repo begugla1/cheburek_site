@@ -1,0 +1,33 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h1 class="features">Номера персонала</h1>
+    <h5 class="features" style="text-decoration: underline solid yellow"><i>Звоните, если надо :)</i></h5>
+    <div class="features">
+        {% if request.user.is_superuser%}
+        <a href="{% url 'contacts_form' %}" class="btn btn-warning">
+            <i class="fas fa-plus-circle"
+               style="margin-right: 5.5px; margin-top: 5px;"></i>Новый сотрудник</a>
+        {% endif %}
+    </div>
+
+    {% if contacts %}
+    <div class="phone-numbers">
+        {% for el in contacts %}
+
+           <div class="alert alert-warning">
+                <h3>{{ el.title }}</h3>
+                <p>{{ el.description }}</p>
+                <p>{{ el.phone_number }}</p>
+           </div>
+
+        {% endfor %}
+
+    {% else %}
+        <p>Все сотрудники уволились:(</p>
+    {% endif %}
+    </div>
+
+{% endblock %}

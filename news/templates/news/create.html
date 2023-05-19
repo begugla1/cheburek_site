@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Форма записи статей{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Форма по добавлению статьи</h1>
+        <h5 style="margin-bottom: 30px; text-decoration: underline solid #198754"><i>Здесь можно опубликовать статью</i></h5>
+        <form method="post" action="{% url 'create' %}">
+            {% csrf_token %}
+            <div class="error">{{ form.non_field_errors }}</div>
+            {% for el in form %}
+                {% if el.name == 'is_published' %}
+                    <p>{{ el.label }}  {{ el }}</p>
+                {% else %}
+                    <p><a hidden>{{ el.label }}</a>{{ el }}</p>
+                {% endif %}
+                {% for error in el.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            {% endfor %}
+            <button class="btn btn-outline-success" type="submit">Добавить</button><br><br>
+        </form>
+    </div>
+{% endblock %}

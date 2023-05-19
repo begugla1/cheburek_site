@@ -1,0 +1,17 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Отправка формы{% endblock %}
+
+{% block content %}
+    <div class="create_result">
+    {% if error == True %}
+        <img src="{% static 'main/img/no.png' %}" alt="Error" style="width: 150px; margin-left: 180px; margin-bottom: 1.5vw; margin-top: 15px" >
+        <h1>Форма не была отправлена!</h1>
+    {% else %}
+        <img src="{% static 'main/img/yes.png' %}" alt="Success" style="width: 150px; margin-left: 180px; margin-bottom: 1.5vw; margin-top: 15px">
+        <h1>Форма успешно отправлена!</h1>
+    {% endif %}
+    </div>
+        <a href="{% url 'news_home' %}" class="home">К новостям</a>
+{% endblock %}

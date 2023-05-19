@@ -1,0 +1,58 @@
+{% extends 'main/layout.html' %}
+{% load news_tags %}
+{% load cache %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="features">
+      <h1 style="margin-bottom: 2vw;">Новости</h1>
+
+        {% if cat_selected == 'none' %}
+            <div class="cl"><p class="selected">Все</p></div>
+        {% else %}
+            <div class="cl"><p><a class='news_category' href="{% url 'news_home' %}">Все</a></p></div>
+        {% endif %}
+
+        {% show_cats 'name' cat_selected %}
+
+        {% if news %}
+            {% for el in news %}
+                <div class="alert alert-warning">
+                    <h3>{{ el.title }}</h3><br>
+                    <p><b>Категория</b>: {{ el.cat }}</p>
+                    <p>{{ el.anons }}</p>
+                    <p>{{ el.full_text|linebreaks|truncatewords:10 }}</p>
+                    <p><b>Дата публикации</b>: {{ el.date }}</p><br>
+                    <a href="{{ el.get_absolute_url }}" class="btn btn-warning">Читать детальнее...</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>У вас нет записей!</p>
+        {% endif %}
+
+        {% if not page_obj.has_other_pages %}
+        {% else %}
+        <div class="list-pages">
+            <ul>
+                {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}" class="btn btn-danger">&lt</a></li>
+                {% endif %}
+
+                {% for p in paginator.page_range %}
+                    {% if page_obj.number == p %}
+                    <li class="page-number"><button class="btn btn-warning" disabled>{{ p }}</button></li>
+                    {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                    <li class="page-number"><a href="?page={{ p }}" class="btn btn-outline-warning">{{ p }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-danger">&gt</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        {% endif %}
+        {# это комментарий! #}
+    </div>
+{% endblock %}

@@ -1,0 +1,186 @@
+body {
+    background: #2c2c2c;
+}
+
+aside {
+    float: left;
+    background: #181818;
+    width: 16.3vw;
+    padding: 1.2vw;
+    height: 200vh;
+    color: #fff;
+    border-right: 5px solid #4d4d4d;
+    font-size: 1.3vw;
+}
+
+aside a {
+    color: white;
+    text-decoration: none;
+}
+
+aside ul {
+    width: 100%:
+}
+
+aside ul li {
+    list-style: none;
+    padding: 1% 0%;
+    transition: transform .4s ease;
+    width: 100%;
+}
+
+aside ul i {padding: 10% 5%;}
+
+aside > i {padding: 10% 2%; color: #ff8c69;}
+
+aside ul {padding-left: 5%;}
+
+.logo {
+    font-size: 2.7em;
+    padding-top: 4%;
+    padding-bottom: 6%;
+}
+
+aside ul li:hover, aside ul a:hover{
+    color: #ff8c69;
+    transform: scale(1.01);
+}
+
+main .features {
+    float: left;
+    color: white;
+    margin-top: 1vw;
+    text-align: center;
+    width: 75%;
+}
+
+main .features h1 {margin-bottom: 1vw;}
+main .features p {max-width: 35vw; margin: 2% auto;}
+
+
+main .phone-numbers {
+    float: left;
+    color: white;
+    text-align: center;
+    margin-top: 2.1vw;
+    width: 75%;
+    font-size: 1.2em;
+}
+
+main .phone-numbers ul {
+    text-align: left;
+    margin: 3vw 12vw;
+}
+
+main .phone-numbers li{
+    list-style-type: none;
+    margin: 2vw 0vw;
+}
+main .phone-numbers a{text-decoration: none; color: sky}
+
+.numbers li:hover, .numbers a:hover{
+    transition: transform .4s ease;
+    color: #7DF9FF;
+    transform: scale(0);
+}
+
+.alert-warning{
+    border-radius: 3px;
+    clear: both;
+    width: 400px;
+    margin: 40px auto;
+    margin-top: 0px;
+    text-align: justify;
+}
+
+.alert-warning h3{text-align: center}
+
+
+
+.create_result {
+    padding-top: 30px;
+    color: white;
+    padding-left: 37vw;
+    padding-bottom: 20px;
+}
+
+a.home {color: white; text-decoration: none; padding-left: 35vw; font-size: 1.7em;}
+a.home:hover {color: #7DF9FF;}
+
+
+.form-control {
+    margin: 0px auto;
+    width: 30vw;
+}
+
+.cf{
+    margin: 1.5vw auto;
+    width: 40%;
+}
+
+.selected {
+    color: coral;
+    font-size: 1.7em;
+    margin: 0 0;
+}
+
+a.news_category {color: white;
+    text-decoration: none;
+    font-size: 1.7em;
+}
+
+a.news_category:hover {
+    color: #7DF9FF;
+}
+
+.cl {
+    font-size: 0.8em;
+}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+}
+
+.error li {
+    list-style-type: none;
+}
+
+label {
+    display: none;
+}
+
+.list-pages {
+    text-align: center;
+}
+
+.list-pages ul {
+    list-style: none;
+    padding: 0;
+}
+
+.list-pages ul li {
+    display: inline-block;
+    padding: 0 11px;
+}
+
+.login a:hover, login i:hover{
+    color: #0DCAF0;
+}
+
+.logout a:hover, logout i:hover{
+    color: #FF0000;
+}
+
+.register {
+    margin-top: 15vh;
+}
+
+.register .form-control {
+    width: 260px;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}
