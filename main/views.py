@@ -1,5 +1,5 @@
 from django.contrib.auth import logout, login
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, FormView
@@ -56,9 +56,8 @@ class LoginUser(LoginView):
         return reverse_lazy('news_home')
 
 
-def logout_user(request):
-    logout(request)
-    return redirect('login')
+class LogoutUser(LogoutView):
+    next_page = reverse_lazy('login')
 
 
 class Feedback(FormView):
@@ -68,3 +67,4 @@ class Feedback(FormView):
 
     def form_valid(self, form):
         return redirect('news_home')
+
