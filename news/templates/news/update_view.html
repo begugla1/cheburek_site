@@ -1,24 +1,23 @@
 {% extends 'main/layout.html' %}
+{% load widget_tweaks %}
 
 {% block title %}Форма редактирования статьи{% endblock %}
 
 {% block content %}
     <div class="features">
-        <h1 style="margin-bottom: 3.5vw;">Форма редактирования статьи</h1>
-        <form method="post" action="{% url 'create' %}">
+        <h1>Форма редактирования статьи</h1>
+        <h5 style="margin-bottom: 30px; text-decoration: underline solid white"><i>Возможно поменять только следующие поля</i></h5>
+        <form method="post">
             {% csrf_token %}
             <div class="error">{{ form.non_field_errors }}</div>
             {% for el in form %}
-                {% if el.name == 'is_published' %}
-                    <p>{{ el.label }}  {{ el }}</p>
-                {% else %}
-                    <p><a hidden>{{ el.label }}</a>{{ el }}</p>
-                {% endif %}
+                <p>{{ el|attr:'class: form-control' }}</p>
                 {% for error in el.errors %}
                     <div class="error">{{ error }}</div>
                 {% endfor %}
             {% endfor %}
-            <button class="btn btn-outline-success" type="submit">Добавить</button>
+
+            <button class="btn btn-outline-success" type="submit">Редактировать</button>
             <a href="{% url 'news_home' %}" class="btn btn-outline-info" style="margin-left: 1vw">К новостям</a>
         </form>
     </div>

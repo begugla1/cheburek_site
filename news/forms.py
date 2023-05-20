@@ -9,6 +9,7 @@ class ArticlesForm(forms.ModelForm):
         for field in self.fields:
             if not field == 'is_published':
                 self.fields[field].widget.attrs['class'] = 'form-control'
+                self.fields[field].label = ''
 
         self.fields['cat'].empty_label = 'Категория не выбрана'
         self.fields['is_published'].label = 'Опубликовать:  '

@@ -55,7 +55,7 @@ class NewsDeleteView(DeleteView):
 
 class NewsUpdateView(UpdateView):
     model = Articles
-    form_class = ArticlesForm
+    fields = ['anons', 'full_text']
     template_name = 'news/update_view.html'
     slug_url_kwarg = 'art_slug'
 

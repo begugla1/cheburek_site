@@ -1,13 +1,27 @@
+from typing import Any, Dict, Mapping, Optional, Type, Union
+from django.core.files.base import File
+from django.db.models.base import Model
 from django.forms import *
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from captcha.fields import CaptchaField
+from django.forms.utils import ErrorList
 from .models import Contacts
 from django.core.exceptions import ValidationError
 from .tests import valid_number
 
 
 class ContactsForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'form-control'
+        self.fields['title'].widget.attrs['placeholder'] = 'Имя сотрудника'
+        self.fields['description'].widget.attrs['placeholder'] = 'Описание'
+        self.fields['phone_number'].widget.attrs['placeholder'] = 'Номер телефона'
+        self.fields['password'].widget.attrs['placeholder'] = 'Пароль'
+
+
     def clean_phone_number(self):
         phone_number = self.cleaned_data['phone_number']
         if not valid_number(phone_number):
@@ -24,24 +38,6 @@ class ContactsForm(ModelForm):
         model = Contacts
         fields = ['title', 'description', 'phone_number', 'password']
 
-        widgets = {
-            'title': TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Имя сотрудника'
-            }),
-            'description': Textarea(attrs={
-                'class': 'form-control',
-                'placeholder': 'Описание'
-            }),
-            'phone_number': TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Номер сотрудника'
-            }),
-            'password': TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Код'
-            })
-        }
 
 
 class RegisterUserForm(UserCreationForm):
