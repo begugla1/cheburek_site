@@ -21,7 +21,6 @@ class ContactsForm(ModelForm):
         self.fields['phone_number'].widget.attrs['placeholder'] = 'Номер телефона'
         self.fields['password'].widget.attrs['placeholder'] = 'Пароль'
 
-
     def clean_phone_number(self):
         phone_number = self.cleaned_data['phone_number']
         if not valid_number(phone_number):
@@ -37,7 +36,6 @@ class ContactsForm(ModelForm):
     class Meta:
         model = Contacts
         fields = ['title', 'description', 'phone_number', 'password']
-
 
 
 class RegisterUserForm(UserCreationForm):
@@ -71,6 +69,7 @@ class FeedbackForm(Form):
         super().__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'form-control'
+
         self.fields['name'].widget.attrs['placeholder'] = 'Имя'
         self.fields['email'].widget.attrs['placeholder'] = 'Email'
         self.fields['captcha'].widget.attrs['placeholder'] = 'Пройдите captcha'
