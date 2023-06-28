@@ -1,5 +1,5 @@
 {% for cat in cats %}
-    {% if cat.articles__count > 0%}
+    {% if cat.articles__count > 0 %}
         {% if cat.slug == cat_selected %}
             <div class="cl"><p class="selected">{{ cat.name }}</p></div>
         {% else %}

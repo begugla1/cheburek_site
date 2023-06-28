@@ -1,11 +1,7 @@
-from typing import Any, Dict, Mapping, Optional, Type, Union
-from django.core.files.base import File
-from django.db.models.base import Model
 from django.forms import *
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from captcha.fields import CaptchaField
-from django.forms.utils import ErrorList
 from .models import Contacts
 from django.core.exceptions import ValidationError
 from .tests import valid_number

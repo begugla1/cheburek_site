@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
     'widget_tweaks',
     'captcha',
     'debug_toolbar',
@@ -144,3 +145,7 @@ CACHES = {
         'LOCATION': os.path.join(BASE_DIR, 'cheburek_cache')
     }
 }
+
+SITE_ID = 1
+
+CRISPY_TEMPLATE_PACK = 'uni_form'
